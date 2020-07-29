@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {backendApiURL} from './config'
 
-const apiURL = 'http://localhost:3001';
+const apiURL = backendApiURL;
 
 class Service{
     get(endpoint, options = null){

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import className from 'classnames';
 // import avatarDefault from '../images/avatarDefault.png';
-import settingsIcon from '../images/settings.png';
+// import settingsIcon from '../images/settings.png';
 import messageIcon from '../images/message.png';
 import sendIcon from '../images/send.png';
 import {OrderedMap} from 'immutable';
@@ -231,7 +231,6 @@ class Messenger extends Component {
                             {messages.map((message, index) => {
 
                                 const user = _.get(message, 'user');
-                                // console.log(message);
                                 return(
                                 <div key={index} className={className('message', {'me': message.me})}>
                                     <div className="message-user-image"><img src={_.get(user, 'avatar')} alt="Avatar"/></div>

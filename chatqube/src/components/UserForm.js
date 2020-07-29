@@ -52,7 +52,6 @@ class UserForm extends Component{
                     }
                    
                 }).catch((err) => {
-                    console.log("Error: ", err);
                     this.setState({
                         message: {
                             body: err,

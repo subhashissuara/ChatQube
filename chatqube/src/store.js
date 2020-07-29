@@ -175,7 +175,6 @@ class Store{
                 this.setCurrentUser(user); // Causes error not mounted
                 this.setUserToken(accessToken);
             }).catch((err) => {
-                console.log("Signing Out..");
                 this.signOut();
             })
         }
@@ -200,7 +199,6 @@ class Store{
     register(user){
         return new Promise((resolve, reject) => {
             this.service.post('api/users', user).then((response) => {
-                console.log("Account created!", response.data);
                 return resolve(response.data);
             }).catch((err) => {
                 return reject("Error Creating Account!");
@@ -232,7 +230,6 @@ class Store{
                 // Fetch User Channels
                 this.fetchUserChannels();
             }).catch((err) => {
-                console.log(err);
                 const message = _.get(err, 'response.data.error.message', "Login Error!");
                 return reject(message);
             })

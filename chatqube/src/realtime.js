@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import {OrderedMap} from 'immutable';
+import {webSocketUrl} from './config'
 
 class Realtime{
     constructor(store){
@@ -15,7 +16,6 @@ class Realtime{
         window.setInterval(() => {
             const user = store.getCurrentUser();
             if(user && !this.isConnected){
-                console.log("Trying to reconnect...")
                 this.connect();
             }
         }, 3000)
@@ -150,19 +150,15 @@ class Realtime{
     }
 
     connect(){
-        //console.log("Called by: ", this.connect.caller)
-        //console.log("Connecting to WS")
-        const ws = new WebSocket('ws://localhost:3001');
+        const ws = new WebSocket(webSocketUrl);
         this.ws = ws;
         ws.onopen = () => {
-            //console.log("You are connected to ws!")
             // Giving Identity to Server
             this.isConnected = true;
             this.authentication();
 
             ws.onmessage = (event) => {
                 this.readMessage(_.get(event, 'data'));
-                console.log("Message from server: ", event.data)
             }
         }
         ws.onclose = () => {

@@ -58,7 +58,6 @@ class Connection{
 
         this.app.db.collection('channels').aggregate(query).toArray((err, results) => {
             if (err === null && results){
-                // console.log("Users chatting with me: ", results)
                 _.each(results, (result) => {
                     const uid = _.toString(_.get(result, '_id'));
                     
@@ -105,12 +104,9 @@ class Connection{
                     let messageObject = payload;
                     messageObject.userId = _.get(userConnection, 'userId');
                     this.app.models.message.create(messageObject).then((message) => {
-                        //console.log("Message created: ", message);
                         const channelId = _.toString(_.get(message, 'channelId'));
-                        //console.log("DEBUG: ", channelId);
                         
                         this.app.models.channel.load(channelId).then((channel) => {
-                            console.log("CHANNEL: ", channel);
                             const memberIds = _.get(channel, 'members', []);
                             _.each(memberIds, (memberId) => {
                                 memberId = _.toString(memberId);
@@ -143,7 +139,6 @@ class Connection{
                 channel.userId = userId;
                 this.app.models.channel.create(channel).then((channelObject) => {
                     // Successfully created channel
-                    //console.log("Created new channel: ", channelObject);
                     // Add and send message to all users in new channel
                     let memberConnections = [];
 
@@ -175,10 +170,8 @@ class Connection{
                                     // Send to ws client with matching userID from channel members
                                     this.send(ws, obj);
                                 });
-                                //console.log(memberConnection);
                             }
                         });
-                        //const memberConnections = this.connections.filter((conn) => `${conn.userId}`)
                         });
                     });
                 break;
@@ -225,7 +218,6 @@ class Connection{
                         this.send(connectionAuth.ws, obj);
                     })
                 }
-                console.log("user with token ID: ", userTokenId, typeof userTokenId);
                 break;
         
             default:
@@ -236,7 +228,6 @@ class Connection{
     modelDidLoad(){
         this.app.wsServer.on('connection', (ws) => {
             const socketId = new ObjectID().toString();
-            //console.log("A user connected to the server via ws. ", socketId)
             const clientConnection = {
                 _id: `${socketId}`,
                 ws: ws,
@@ -249,12 +240,10 @@ class Connection{
             
             // Listen all messages from websocket clients
             ws.on('message', (msg) => {
-                //console.log("Message from client: ", msg);
                 const message = this.decodeMessage(msg);
                 this.doTheJob(socketId, message);
             })
             ws.on('close', () => {
-                //console.log("A user disconnected from server via ws.", socketId);
                 const closeConnection = this.connections.get(socketId);
                 const userId = _.toString(_.get(closeConnection, 'userId', null));
                 // Remove socket of client from connections

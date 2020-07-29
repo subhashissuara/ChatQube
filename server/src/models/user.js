@@ -221,7 +221,6 @@ class User {
         const db = this.app.db;
         return new Promise((resolve, reject) => {
             this.beforeSave(user, (err, user) => {
-                console.log("After Validation: ", err, user);
                 if(err){
                     return reject(err);
                 }

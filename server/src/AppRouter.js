@@ -13,16 +13,16 @@ class AppRouter{
     setupRouter(){
         const app = this.app;
         
-        /*
-        - @endpoint: /
-        - @method: GET
-        */
+        // /*
+        // - @endpoint: /
+        // - @method: GET
+        // */
 
-        app.get('/', (req, res, next) => {
-            return res.json({ 
-                started: moment(START_TIME).fromNow(),
-            });
-        });
+        // app.get('/', (req, res, next) => {
+        //     return res.json({ 
+        //         started: moment(START_TIME).fromNow(),
+        //     });
+        // });
 
         /*
         - @endpoint: /api/users
@@ -188,7 +188,6 @@ class AppRouter{
             let filter = _.get(req, 'query.filter', null);
             if (filter) {
                 filter = JSON.parse(filter);
-                console.log(filter);
             }
 
             const channelId = _.toString(_.get(req, 'params.id'));
@@ -284,7 +283,6 @@ class AppRouter{
                 app.models.channel.aggregate(query).then((channels) => {
                     return res.status(200).json(channels);
                 }).catch((err) => {
-                    console.log(err);
                     return res.status(404).json({error: {message: "Not Found!"}});
                 })
             }).catch(err => {
