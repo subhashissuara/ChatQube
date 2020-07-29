@@ -1,0 +1,593 @@
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap";
+body, html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #2c3e50;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-app {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #2C3DFF;
+  background: -webkit-linear-gradient(top left, #2C3DFF, #41C931);
+  background: -moz-linear-gradient(top left, #2C3DFF, #41C931);
+  background: linear-gradient(to bottom right, #2C3DFF, #41C931);
+}
+.mobile-app h1 {
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+.mobile-app p {
+  padding: 0 50px;
+  text-align: center;
+  color: white;
+}
+
+.messenger {
+  display: flex;
+  flex-direction: column;
+}
+.messenger .messenger-header {
+  height: 50px;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.messenger .messenger-header .left {
+  width: 200px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.messenger .messenger-header .left .left-action img {
+  width: 30px;
+  height: 30px;
+}
+.messenger .messenger-header .left .left-action button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  outline: none;
+}
+.messenger .messenger-header .left h2 {
+  font-size: 19px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.messenger .messenger-header .left h2 sup {
+  margin-left: 2px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.messenger .messenger-header .left .right-action img {
+  width: 30px;
+  height: 30px;
+}
+.messenger .messenger-header .left .right-action button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  outline: none;
+}
+.messenger .messenger-header .middle {
+  flex-grow: 1;
+}
+.messenger .messenger-header .middle h2 {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  overflow-y: hidden;
+}
+.messenger .messenger-header .middle .toolbar {
+  height: 50px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.messenger .messenger-header .middle .toolbar span {
+  height: 30px;
+  line-height: 20px;
+  background-color: #3cb1ff;
+  color: white;
+  cursor: pointer;
+  display: block;
+  border-radius: 3px;
+  margin: 10px 5px 0 0;
+  padding: 5px;
+}
+.messenger .messenger-header .middle .toolbar label {
+  line-height: 50px;
+  margin-right: 3px;
+}
+.messenger .messenger-header .middle .toolbar input {
+  height: 30px;
+  line-height: 30px;
+  margin-top: 11px;
+  border: 0 none;
+  outline: none;
+}
+.messenger .messenger-header .middle .toolbar .search-user {
+  min-width: 200px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 0 none;
+}
+.messenger .messenger-header .middle .toolbar .search-user .user-list {
+  display: flex;
+  flex-direction: column;
+}
+.messenger .messenger-header .middle .toolbar .search-user .user-list .user {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  align-items: center;
+  cursor: pointer;
+}
+.messenger .messenger-header .middle .toolbar .search-user .user-list .user img {
+  padding: 2px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: lightblue;
+}
+.messenger .messenger-header .middle .toolbar .search-user .user-list .user h3 {
+  padding-left: 8px;
+  flex-grow: 1;
+  font-size: 14px;
+}
+.messenger .messenger-header .middle .toolbar .search-user .user-list .user:last-child {
+  border-bottom: 0 none;
+}
+.messenger .messenger-header .middle .toolbar .search-user .user-list .user:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.messenger .messenger-header .right {
+  width: 300px;
+}
+.messenger .messenger-header .right .user-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+  line-height: 50px;
+}
+.messenger .messenger-header .right .user-bar .login-button {
+  padding-right: 10px;
+  cursor: pointer;
+}
+.messenger .messenger-header .right .user-bar .profile-name .profile-name-text {
+  padding-right: 10px;
+  cursor: pointer;
+  text-align: end;
+}
+.messenger .messenger-header .right .user-bar .profile-name .conn-status {
+  margin-top: -10px;
+  display: flex;
+  justify-content: flex-end;
+  cursor: default;
+}
+.messenger .messenger-header .right .user-bar .profile-name .conn-status .conn-status-text {
+  line-height: 0px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.messenger .messenger-header .right .user-bar .profile-name .conn-status .conn-status-reconnect {
+  line-height: 0px;
+  font-size: 10px;
+  font-weight: 600;
+  padding-left: 3px;
+  padding-right: 10px;
+  color: #e74c3c;
+}
+.messenger .messenger-header .right .user-bar .profile-name .conn-status .conn-status-online {
+  line-height: 0px;
+  font-size: 10px;
+  font-weight: 600;
+  padding-left: 3px;
+  padding-right: 10px;
+  color: #00d672;
+}
+.messenger .messenger-header .right .user-bar .profile-image {
+  cursor: pointer;
+}
+.messenger .messenger-header .right .user-bar .profile-image img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 10px 0 0 0;
+}
+.messenger .messenger-header .right .user-bar .login-button {
+  height: 50px;
+  border: 0 none;
+  background: none;
+  outline: none;
+  color: #3cb1ff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.messenger .messenger-header .right .user-bar .user-form {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 0 none;
+  padding: 30px;
+}
+.messenger .messenger-header .right .user-bar .user-form .form-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+.messenger .messenger-header .right .user-bar .user-form .form-item label {
+  height: 30px;
+  font-weight: 600;
+  min-width: 100px;
+  margin-bottom: 8px;
+}
+.messenger .messenger-header .right .user-bar .user-form .form-item input[type=email], .messenger .messenger-header .right .user-bar .user-form .form-item input[type=password], .messenger .messenger-header .right .user-bar .user-form .form-item input[type=text] {
+  line-height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding-left: 3px 8px;
+  text-indent: 5px;
+}
+.messenger .messenger-header .right .user-bar .user-form .form-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.messenger .messenger-header .right .user-bar .user-form .form-actions button {
+  border: 0 none;
+  outline: none;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  margin: 5px;
+}
+.messenger .messenger-header .right .user-bar .user-form .form-actions button.primary {
+  background-color: #3cb1ff;
+  color: white;
+}
+.messenger .messenger-header .right .user-bar .user-form .login-message {
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #3cb1ff;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.messenger .messenger-header .right .user-bar .user-form .login-message.error {
+  border: 1px solid #e74c3c;
+}
+.messenger .messenger-header .right .user-bar .user-menu {
+  min-width: 150px;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 0 none;
+  background-color: white;
+}
+.messenger .messenger-header .right .user-bar .user-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.messenger .messenger-header .right .user-bar .user-menu ul li {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.messenger .messenger-header .right .user-bar .user-menu ul li:first-child {
+  border: 0 none;
+}
+.messenger .messenger-header .right .user-bar .user-menu ul li button {
+  padding: 8px;
+  background: none;
+  border: 0 none;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  width: 150px;
+  outline: none;
+}
+.messenger .messenger-header .right .user-bar .user-menu ul li button:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.messenger .messenger-header .right .user-bar .about-contact {
+  min-width: 150px;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 0 none;
+  background-color: white;
+}
+.messenger .messenger-body {
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.messenger .messenger-body .messenger-sidebar-left {
+  width: 200px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+.messenger .messenger-body .messenger-content {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.messenger .messenger-body .messenger-content .messgaes {
+  flex-grow: 1;
+}
+.messenger .messenger-body .messenger-content .message-input {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.messenger .messenger-body .messenger-content .message-input .text-input {
+  flex-grow: 1;
+}
+.messenger .messenger-body .messenger-content .message-input .text-input textarea {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  padding: 8px 15px;
+  resize: none;
+}
+.messenger .messenger-body .messenger-content .message-input .actions button.send {
+  background-color: #3cb1ff;
+  color: white;
+  border: 0 none;
+  padding: 7px 15px;
+  line-height: 50px;
+  outline: none;
+  cursor: pointer;
+}
+.messenger .messenger-body .messenger-content .message-input .actions img {
+  width: 30px;
+  height: 30px;
+}
+.messenger .messenger-body .messenger-sidebar-right {
+  width: 300px;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  padding-left: 0px;
+}
+.messenger .messenger-body .messenger-sidebar-right h2.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 8px;
+}
+.messenger .messenger-body .messenger-sidebar-right .user-status {
+  font-size: 11px;
+  color: #2c3e50;
+}
+.messenger .messenger-body .messenger-sidebar-right .user-status.online {
+  color: #00d672;
+}
+.messenger .messenger-body .messenger-sidebar-right .contact-email {
+  width: 290px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+}
+.messenger .messenger-body .messenger-sidebar-right .contact-email a {
+  margin-left: 3px;
+  color: black;
+  text-decoration: none;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  height: 100%;
+}
+.messages .message {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 15px;
+}
+.messages .message .message-user-image img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.messages .message .message-body {
+  padding-left: 10px;
+}
+.messages .message .message-body .message-text {
+  background: rgba(0, 0, 0, 0.1);
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+.messages .message.me {
+  justify-content: flex-end;
+}
+.messages .message.me .message-body .message-text {
+  background: #202c38;
+  color: white;
+}
+
+.channels {
+  height: 100%;
+  overflow-y: auto;
+}
+.channels .channel {
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 8px;
+}
+.channels .channel .user-image {
+  width: 38px;
+}
+.channels .channel .user-image img {
+  max-width: 100%;
+}
+.channels .channel .user-image .channel-avatars {
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #cccccc;
+  position: relative;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-1 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-2 img {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-2 img:first-child {
+  left: 0;
+  top: 0;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-3 img {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  right: 0;
+  top: 0;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-3 img:first-child {
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-3 img:last-child {
+  bottom: 0;
+  right: 0;
+  top: 15px;
+  width: 50%;
+  height: 50%;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-4 img {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  right: 0;
+  top: 0;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-4 img:first-child {
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-4 img:nth-child(3) {
+  bottom: 0;
+  right: 0;
+  top: 15px;
+  width: 50%;
+  height: 50%;
+}
+.channels .channel .user-image .channel-avatars.channel-avatars-4 img:last-child {
+  left: 0;
+  bottom: 0;
+  top: 15px;
+}
+.channels .channel .channel-info {
+  flex-grow: 1;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow: hidden;
+}
+.channels .channel .channel-info h2 {
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.channels .channel .channel-info p {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.channels .channel.active {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.channels .channel.notify .channel-info p {
+  color: #00d672;
+}
+
+.members .member {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 8px 0px;
+  padding-left: 10px;
+}
+.members .member .user-image {
+  width: 35px;
+  position: relative;
+}
+.members .member .user-image img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.members .member .user-image .user-status {
+  width: 10px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+.members .member .user-image .user-status.online {
+  background-color: #00d672;
+}
+.members .member .member-info {
+  padding-left: 8px;
+  flex-grow: 1;
+}
+.members .member .member-info h2 {
+  font-size: 14px;
+}
+.members .member .member-info p {
+  font-size: 12;
+}
+
+/*# sourceMappingURL=style.css.map */
