@@ -341,6 +341,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+.messenger .messenger-body .messenger-content .signin-message {
+  align-self: center;
+  margin: auto;
+  font-family: "Open Sans", sans-serif;
+  color: #3cb1ff;
+}
 .messenger .messenger-body .messenger-content .messgaes {
   flex-grow: 1;
 }

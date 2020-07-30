@@ -153,6 +153,7 @@ class Messenger extends Component {
         const messages = store.getMessagesFromChannel(activeChannel);
         const channels = store.getChannels();
         const members = store.getMembersFromChannel(activeChannel);
+        const me = store.getCurrentUser();
         
         return(
             <div className="messenger">
@@ -160,7 +161,7 @@ class Messenger extends Component {
                     <div className="left">
                         {/* <div className="left-action"><button><img src={settingsIcon} alt="Settings"/></button></div> */}
                         <h2>ChatQube<sup>BETA</sup></h2>
-                        <div onClick={this._onCreateChannel}className="right-action"><button><img src={messageIcon} alt="New Message"/></button></div>
+                        {me ? <div onClick={this._onCreateChannel}className="right-action"><button><img src={messageIcon} alt="New Message"/></button></div> : null}
                     </div>
                 <div className="middle">
                     {_.get(activeChannel, 'isNew') ? 
@@ -228,7 +229,7 @@ class Messenger extends Component {
                     </div>
                     <div className="messenger-content">
                         <div ref={(ref) => this.messageRef = ref} className="messages">
-                            {messages.map((message, index) => {
+                            {me ? messages.map((message, index) => {
 
                                 const user = _.get(message, 'user');
                                 return(
@@ -242,7 +243,7 @@ class Messenger extends Component {
                                     </div>
                                 </div>
                             )
-                            })}
+                            }) : <div className="signin-message"><h1>Click on Sign In to Get Started!</h1></div>}
                         </div>
                         {activeChannel && members.size > 0 ? <div className="message-input">
                             <div className="text-input">

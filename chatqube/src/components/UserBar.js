@@ -26,7 +26,7 @@ class UserBar extends Component{
                     this.setState({
                         showUserForm: true,
                     })
-                }} type="button" className="login-button">Sign in</button> : 
+                }} type="button" className="login-button">Sign In</button> : 
                 <div onClick={() => {
                         this.setState({
                             showUserMenu: true,

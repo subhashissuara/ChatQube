@@ -351,6 +351,12 @@ body{
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            .signin-message{
+                align-self: center;
+                margin: auto;
+                font-family: 'Open Sans', sans-serif;
+                color: $primary-color;
+            }
             .messgaes{
                 flex-grow: 1;
             }
