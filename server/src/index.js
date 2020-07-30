@@ -1,8 +1,10 @@
 import http from 'http';
+import https from 'https';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import path from 'path';
+import fs from 'fs';
 import WebSocket from 'ws';
 import AppRouter from './AppRouter';
 import Model from './models';
@@ -10,6 +12,10 @@ import Database from './mongoDBClient';
 
 const PORT = 3001;
 const app = express();
+// app.server = https.createServer({
+//     key: fs.readFileSync(path.resolve('./ssl/localhost.key')),
+//     cert: fs.readFileSync(path.resolve('./ssl/localhost.crt')),
+//   }, app)
 app.server = http.createServer(app);
 app.wsServer = new WebSocket.Server({server: app.server});
 

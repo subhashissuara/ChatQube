@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A chat application.",
   "main": "index.js",
+  "homepage": ".",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets env,stage-0\"",
     "build": "babel src -s -D -d dist --presets env,stage-0",
