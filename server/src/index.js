@@ -12,16 +12,27 @@ import Database from './mongoDBClient';
 
 const PORT = 3001;
 const app = express();
-// app.server = https.createServer({
-//     key: fs.readFileSync(path.resolve('./ssl/localhost.key')),
-//     cert: fs.readFileSync(path.resolve('./ssl/localhost.crt')),
-//   }, app)
-app.server = http.createServer(app);
+
+app.server = https.createServer({
+    key: fs.readFileSync('/etc/letsencrypt/live/chatqube.subhashissuara.tech/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/chatqube.subhashissuara.tech/cert.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/chatqube.subhashissuara.tech/chain.pem'),
+  }, app);
+// app.server = http.createServer(app);
+
 app.wsServer = new WebSocket.Server({server: app.server});
 
 app.use(cors({
     exposedHeaders: "*"
 }));
+// app.use(cors({
+//     'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
+//     'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
+//     'origin': '*',
+//     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     'preflightContinue': false
+// }));
+
 app.use(bodyParser.json({
     limit: '50mb'
 }));

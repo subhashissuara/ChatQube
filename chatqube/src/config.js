@@ -1,6 +1,9 @@
 export const production = true; // true for deployment, false for Dev
 
-// const domain = production ? '104.211.213.174' : '127.0.0.1:3001';
-const domain = '127.0.0.1:3001';
-export const webSocketUrl = `ws://${domain}`;
-export const backendApiURL = `http://${domain}`;
+const domain = production ? 'chatqube.subhashissuara.tech' : '127.0.0.1:3001';
+export const webSocketUrl = `wss://${domain}`;
+export const backendApiURL = `https://${domain}`;
+
+// const domain = '127.0.0.1:3001';
+// export const webSocketUrl = `ws://${domain}`;
+// export const backendApiURL = `http://${domain}`;

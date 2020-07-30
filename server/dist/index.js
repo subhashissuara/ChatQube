@@ -8,6 +8,10 @@ var _http = require('http');
 
 var _http2 = _interopRequireDefault(_http);
 
+var _https = require('https');
+
+var _https2 = _interopRequireDefault(_https);
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -23,6 +27,10 @@ var _bodyParser2 = _interopRequireDefault(_bodyParser);
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
+
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
 
 var _ws = require('ws');
 
@@ -44,12 +52,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var PORT = 3001;
 var app = (0, _express2.default)();
-app.server = _http2.default.createServer(app);
+
+app.server = _https2.default.createServer({
+    key: _fs2.default.readFileSync('/etc/letsencrypt/live/chatqube.subhashissuara.tech/privkey.pem'),
+    cert: _fs2.default.readFileSync('/etc/letsencrypt/live/chatqube.subhashissuara.tech/cert.pem'),
+    ca: _fs2.default.readFileSync('/etc/letsencrypt/live/chatqube.subhashissuara.tech/chain.pem')
+}, app);
+// app.server = http.createServer(app);
+
 app.wsServer = new _ws2.default.Server({ server: app.server });
 
 app.use((0, _cors2.default)({
     exposedHeaders: "*"
 }));
+// app.use(cors({
+//     'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
+//     'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
+//     'origin': '*',
+//     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     'preflightContinue': false
+// }));
+
 app.use(_bodyParser2.default.json({
     limit: '50mb'
 }));
